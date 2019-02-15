@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head">
+        <!-- Title -->
+        <title>Gallery - MyTicket</title>
+    </head>
+<body>
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/compact-disc.png" alt="">
+        </div>
+    </div>
+    <header th:replace="layout :: site-header"></header>
+    
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb5.jpg);">
+        <div class="bradcumbContent">
+            <h2>Gallery</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Parties Area Start ##### -->
+    <div class="upcoming-shows-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>Galleries</h2>
+                        <h6>Find your favorite galleries, Buy a ticket!</h6>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-12">
+                    <!-- Galleries Content -->
+                    <div class="upcoming-shows-content">
+                        
+                        <!-- Single Galleries -->
+                        <div th:replace="fragments :: single-event-html"></div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Galleries Area End ##### -->
+
+    <p>Gallery</p>
+
+    <footer th:replace="layout :: site-footer"></footer>
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+    <!-- Custom JS for Thymeleaf -->
+    <script th:replace="fragments :: single-event-js"></script>
+</body>
+</html>

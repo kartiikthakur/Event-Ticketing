@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head">
+        <!-- Title -->
+        <title>Organizer Dashboard - Create/Manage Events </title>
+    </head>
+<body>
+
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/compact-disc.png" alt="">
+        </div>
+    </div>
+    <header th:replace="layout :: site-header"></header>
+    
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb5.jpg);">
+    <div class="bradcumbContent">
+        <h2>Check out success</h2>
+    </div>
+</div>
+<!-- bg gradients -->
+<div class="bg-gradients"></div>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+    <!--------------------------------------------------->
+
+    <!-- ##### Upcoming Shows Area Start ##### -->
+    <h3>You have successfully checked out!</h3>
+        <!-- ##### Upcoming Shows Area End ##### -->
+    
+
+    
+    <footer th:replace="layout :: site-footer"></footer>
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+    
+    <!-- Custom JS for Thymeleaf -->
+    <script th:replace="fragments :: single-event-js"></script>
+</body>
+</html>
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head">
+        <!-- Title -->
+        <title>Organizer Dashboard - Create/Manage Events </title>
+    </head>
+<body>
+
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/compact-disc.png" alt="">
+        </div>
+    </div>
+    <header th:replace="layout :: site-header"></header>
+    
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb5.jpg);">
+    <div class="bradcumbContent">
+        <h2>Organizer Dashboard</h2>
+    </div>
+</div>
+<!-- bg gradients -->
+<div class="bg-gradients"></div>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+    <!--------------------------------------------------->
+
+    <!-- ##### Upcoming Shows Area Start ##### -->
+    <div class="upcoming-shows-area section-padding-100 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-heading">
+                            <hr><hr>
+                            <h2>REGISTERED EVENTS</h2>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Upcoming Shows Content -->
+                        <div class="upcoming-shows-content">
+    
+                            <!-- Single Upcoming Shows -->
+                            <div th:each="event : ${events}" class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                <div class="shows-date">
+                                    <h2><div th:class="'etms-event-date' + ${event.eventID}"></div> <span><div th:class="'etms-event-month' + ${event.eventID}"></div></span></h2>
+                                </div>
+                                <div class="shows-desc d-flex align-items-center">
+                                    <div class="shows-img">
+                                        <img th:src="${event.imgUrl}" alt="">
+                                    </div>
+                                    <div class="shows-name">
+                                        <h6 th:text="${event.eventName}"></h6>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="shows-location">
+                                    <p th:text="${event.location}" />
+                                </div>
+                                <div class="shows-time">
+                                    <p th:class="'etms-event-day' + ${event.eventID}"></p>
+                                    <p th:class="'etms-event-time' + ${event.eventID}"></p>
+                                </div>
+                                <div class="buy-tickets">
+                                    <form th:action="@{/buyTickets}" method="POST">
+                                        <input type="hidden" name="eventID" th:value="${event.eventID}" />
+                                        <a href="#" class="btn musica-btn" onclick="$(this).closest('form').submit()">Event Details</a>
+                                    </form>
+                                    <hr>
+                                    <!-- <a href="" class="btn musica-btn">TODO: Delete</a> -->
+                                    <a th:href="@{~/deleteEvent(eventID=${event.eventID})}" class="btn musica-btn">Delete</a>
+                                </div>   
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ##### Upcoming Shows Area End ##### -->
+    
+
+    <!---------------------------------------------------->
+    <!-- ##### Contact Area Start ##### -->
+    <section class="contact-area mt-50 ">
+        <div class="container">
+                
+            <!------------------------------------------->
+            <hr>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                     <h1>Create a new event:</h1>
+                    <div class="contact-content">
+
+                        <!-- Contact Social Info -->
+                        <div class="contact-social-info mt-30">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                        
+                        <p class="mb-30">This form on the right will enable you to add a new event. Please, fill all the details and the request will be send to the admin. Please, contact us for any further enquiry.</p>
+
+                        <!-- Single Contact Info -->
+                        <div class="single-contact-info d-flex align-items-center">
+                            <div class="icon">
+                                <img src="img/core-img/placeholder.png" alt="">
+                            </div>
+                            <h6>1400 Washington Ave, Albany, NY 12222</h6>
+                        </div>
+
+                        <!-- Single Contact Info -->
+                        <div class="single-contact-info d-flex align-items-center">
+                            <div class="icon">
+                                <img src="img/core-img/message.png" alt="">
+                            </div>
+                            <h6>+1 (518) 442-3300</h6>
+                        </div>
+
+                        <!-- Single Contact Info -->
+                        <div class="single-contact-info d-flex align-items-center">
+                            <div class="icon">
+                                <img src="img/core-img/smartphone.png" alt="">
+                            </div>
+                            <h6>adminmail@gmail.com</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="contact-content mt-70 mb-100">
+                        <!-- Contact Form Area -->
+                        <div class="contact-form-area">
+                            <form action="#" method="post" th:action="@{/submitNewEvent}" th:object="${newEvent}">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" placeholder="Event Name" th:field="*{eventName}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="category" placeholder="Category" th:field="*{eventCategory}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="location" placeholder="Location" th:field="*{location}">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <input type="text" class="form-control" id="eventDdate" placeholder="Date:MM-DD-YYYY-HH" name="eventDate"> -->
+                                    <input type="datetime-local" class="form-control" id="time" name="bdaytime" th:field="*{date}">
+                                </div>
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" class="form-control" id="subject" placeholder="Artist Name">-->
+                                <!--</div>-->
+                                <div class="form-group">
+                                    <input type="number" step="0.01" class="form-control" id="price" placeholder="Price" th:field="*{price}">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" class="form-control" id="description" cols="30" rows="10" placeholder="About Event" th:field="*{description}"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="url" placeholder="Event Image URL" th:field="*{imgUrl}">
+                                </div>
+                                <button class="btn musica-btn mt-30" type="submit">Submit Event</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+    </section>
+
+
+    <!-- Google Map -->
+    <div class="container"></div>
+    <div class="google-maps">
+        <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=1400%20Washington%20Avenue%2C%20Albany%2C%20NY%2C%20USA%20earth%20science%20building&key=AIzaSyBifOxMWorX6XIK-TEgw2w6RXlKJcdS2nw" allowfullscreen></iframe>
+    </div>
+
+    <!-- ##### Contact Area End ##### -->
+
+
+    <footer th:replace="layout :: site-footer"></footer>
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+    <!-- Custom JS for Thymeleaf -->
+    <script th:replace="fragments :: single-event-js"></script>
+</body>
+</html>

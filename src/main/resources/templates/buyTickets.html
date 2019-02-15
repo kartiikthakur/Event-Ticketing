@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head th:replace="layout :: site-head">
+                <!-- Title -->
+                <title>UpComing - MyTicket</title>
+            </head>
+<body>
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/compact-disc.png" alt="">
+        </div>
+    </div>
+    <header th:replace="layout :: site-header"></header>
+
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <h2 th:text="${event.eventCategory}">Concert</h2>
+        </div>
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+    <!-- ##### Breadcumb Area End ##### -->
+    
+
+    <!-- ##### CTA Area Start ##### -->
+    <div class="musica-cta-area section-padding-100 mt-100 bg-img bg-overlay2" th:style="'background-image: url(' + ${event.imgUrl} + ');'">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-content d-flex justify-content-between align-items-center">
+                        <div class="cta-text">
+                            <h3>Event</h3>
+                            <h6 th:text="${event.eventName}"></h6>
+                            <p></p>
+                            <h3>Location</h3>
+                            <h6 th:text="${event.location}"></h6>
+                            <p></p>
+                            <h3>Date</h3>
+                            <h6 th:class="'etms-event-date' + ${event.eventID}"></h6>
+                            <p></p>
+                            <h3>Time</h3>
+                            <h6 th:class="'etms-event-time' + ${event.eventID}"></h6>
+                            <p></p>
+                            <h3>Price</h3>
+                            <h6 th:text="${event.price}"></h6>
+                            <p></p>
+                            <h3>About</h3>
+                            <h6 th:text="${event.description}"></h6>
+                            
+                        </div>
+                        <div class="cta-btn">
+                            <form th:action="@{/addToCart}" method="POST">
+                                <input type="hidden" name="eventID" th:value="${event.eventID}" />
+                                <!--TODO: Add input for number of tickets. -->
+                                <input type="hidden" name="numberOfTickets" th:value="1" /> 
+                                <a href="#" class="btn musica-btn" onclick="$(this).closest('form').submit()">Add to cart</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### CTA Area End ##### -->
+
+
+    <footer th:replace="layout :: site-footer"></footer>
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+    <!-- Custom JS for Thymeleaf -->
+    <script th:inline="javascript">
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const months = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+    
+        /*<![CDATA[*/
+            var date = new Date(/*[[${event.date}]]*/);
+            $(/*[['.etms-event-date' + ${event.eventID}]]*/).text(days[date.getDay()].slice(0, 3) + ' ' + date.getDate() + ' ' + months[date.getMonth()].slice(0, 3) + ' ' + date.getFullYear());
+            $(/*[['.etms-event-time' + ${event.eventID}]]*/).text(date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2));
+        /*]]>*/
+    </script>
+</body>
+
+</html>

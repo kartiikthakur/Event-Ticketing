@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head">
+        <!-- Title -->
+        <title>Organizer Dashboard - Create/Manage Events </title>
+    </head>
+<body>
+
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/compact-disc.png" alt="">
+        </div>
+    </div>
+    <header th:replace="layout :: site-header"></header>
+    
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb5.jpg);">
+    <div class="bradcumbContent">
+        <h2>Shopping Cart</h2>
+    </div>
+</div>
+<!-- bg gradients -->
+<div class="bg-gradients"></div>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+    <!--------------------------------------------------->
+
+    <!-- ##### Upcoming Shows Area Start ##### -->
+    <div class="upcoming-shows-area section-padding-100 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-heading">
+                            <hr><hr>
+                            <h2>ITEMS LIST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a th:href="@{/checkout}" class="btn musica-btn">Proceed To Checkout</a></h2>
+                            
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Upcoming Shows Content -->
+                        <div class="upcoming-shows-content">
+
+                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+
+                        </div>
+
+                            <!-- Single Upcoming Shows -->
+                            <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                <div class="shows-date">
+                                    <h2>Day <span>Month</span></h2>
+                                </div>
+                                <div class="shows-desc d-flex align-items-center">
+                                    <div class="shows-img">
+                                        <h6></h6>
+                                    </div>
+                                    <div class="shows-name">
+                                        <h6>Event Name</h6>
+                                        <p>Location</p>
+                                    </div>
+                                </div>
+                                <div class="shows-location">
+                                    <p>Number of Tickets</p>
+                                </div>
+                                <div class="shows-time">
+                                    <p>Price per ticket</p>
+                                </div>
+                                <div class="buy-tickets">
+                                    <!-- <p>Total Amount</p> -->
+                                </div>
+                                
+                            </div>
+                                <hr><hr><hr>
+        
+                            <!-- Single Upcoming Shows -->
+                            <div th:each="transaction : ${transactions}" class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                <div class="shows-date">
+                                    <h2><div th:class="'etms-event-date' + ${transaction.eventID}"></div> <span><div th:class="'etms-event-month' + ${transaction.eventID}"></div></span></h2>
+                                </div>
+                                <div class="shows-desc d-flex align-items-center">
+                                    <div class="shows-img">
+                                        <img th:class="'etms-event-image' + ${transaction.eventID}" src="img/bg-img/s1.jpg" alt=""><!-- <img th:src="${event.imgUrl}" alt=""> -->
+                                    </div>
+                                    <div class="shows-name">
+                                        <h6 th:class="'etms-event-name' + ${transaction.eventID}"></h6>
+                                        <p th:class="'etms-event-location' + ${transaction.eventID}"></p>
+                                    </div>
+                                </div>
+                                <div class="shows-location"><!--Number of Tickets-->
+                                    <p>1 Ticket</p>
+                                </div>
+                                <div class="shows-time"><!--Price per Ticket-->
+                                    <p th:class="'etms-event-price' + ${transaction.eventID}">$50/ticket</p>
+                                </div>
+                                <div class="buy-tickets"><!--Total Ammount-->
+                                    <!-- <p th:class="'etms-event-price' + ${transaction.eventID}">$50</p>
+                                    <hr> -->
+                                    <form th:action="@{/removeFromCart}" method="POST">
+                                        <input type="hidden" name="transactionID" th:value="${transaction.transactionID}" />
+                                        <a href="#" class="btn musica-btn" onclick="$(this).closest('form').submit()">Remove</a>
+                                    </form>
+                                    <hr>
+                                    <form th:action="@{/buyTickets}" method="POST">
+                                        <input type="hidden" name="eventID" th:value="${transaction.eventID}" />
+                                        <a href="#" class="btn musica-btn" onclick="$(this).closest('form').submit()">Event Details</a>
+                                    </form>
+                                </div>   
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="single-upcoming-shows d-flex align-items-center flex-wrap"></div>
+                <div class="row">
+                        <div class="col-12">
+                            <div class="section-heading">
+                                <hr><hr><hr><hr><hr>
+                                <!-- <h2>ITEMS LIST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="@{/checkout}" class="btn musica-btn">Proceed To Checkout</a></h2> -->
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+            </div>
+        </div>
+        <!-- ##### Upcoming Shows Area End ##### -->
+    
+
+    
+    <footer th:replace="layout :: site-footer"></footer>
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+    
+    <!-- Custom JS for Thymeleaf -->
+    <script th:replace="fragments :: single-event-js"></script>
+</body>
+</html>
+

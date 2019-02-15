@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="site-head">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="../static/img/core-img/favicon.ico" th:href="@{/img/core-img/favicon.ico}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/style.css}">
+</head>
+
+<body>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area" th:fragment="site-header">
+        <!-- Navbar Area -->
+        <div class="musica-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container-fluid">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="musicaNav">
+
+                        <!-- Nav brand -->
+                        <a href="/" th:href="@{/}" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="/" th:href="@{/}">Home</a></li>
+                                    <li><a href="/upcoming" th:href="@{/upcoming}">UpComing</a></li>
+                                    <li><a href="#">Events</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/concerts" th:href="@{/concerts}">Concerts</a></li>
+                                            <li><a href="/sports" th:href="@{/sports}">Sports</a></li>
+                                            <li><a href="/parties" th:href="@{/parties}">Parties</a></li>
+                                            <li><a href="/theater" th:href="@{/theater}">Theater</a></li>
+                                            <li><a href="/gallery" th:href="@{/gallery}">Gallery</a></li>
+                                            <li><a href="/festival" th:href="@{/festival}">Festival</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/cart" th:href="@{/cart}">Cart</a></li>
+                                </ul>
+                                <!-- Social Button -->
+                                <div class="top-social-info">
+                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    <a href="/signin" th:href="@{/signin}" aria-hidden="true" sec:authorize="!isAuthenticated()">Sign In</a>
+                                    <a th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">Logged in as Admin </a>
+                                    <a th:href="@{/organizerdashboard}" sec:authorize="hasRole('ROLE_ORGANIZER')">Logged in as Organizer </a>
+                                    <a th:href="@{/userdashboard}" sec:authorize="hasRole('ROLE_USER')">Hello Ricky </a>
+                                    <span> | </span>
+                                    <a href="/logout" th:href="@{/logout}" aria-hidden="true" sec:authorize="isAuthenticated()">
+                                        <form method="POST" th:action="@{/logout}" >Log out</form>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+<!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area section-padding-100-0" th:fragment="site-footer">
+        <div class="container-fluid">
+            <div class="row">
+    
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="footer-widget-area mb-100">
+                        <a href="#"><img src="img/core-img/logo2.png" alt=""></a>
+                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-4 col-xl-2">
+                    <div class="footer-widget-area mb-100">
+                        <div class="widget-title">
+                            <h4>About</h4>
+                        </div>
+                        <nav>
+                            <ul class="footer-nav">
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">The team</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+    
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-4 col-xl-2">
+                    <div class="footer-widget-area mb-100">
+                        <div class="widget-title">
+                            <h4>Links</h4>
+                        </div>
+                        <nav>
+                            <ul class="footer-nav">
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">The team</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+    
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-4 col-xl-2">
+                    <div class="footer-widget-area mb-100">
+                        <div class="widget-title">
+                            <h4>Social</h4>
+                        </div>
+                        <nav>
+                            <ul class="footer-nav">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">Snapchat</a></li>
+                                <li><a href="#">Instagram</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+    
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="footer-widget-area mb-100">
+                        <div class="widget-title">
+                            <h4>Subscribe</h4>
+                        </div>
+                        <form action="#" method="post" class="subscribe-form">
+                            <input type="email" name="subscribe-email" id="subscribeemail">
+                            <button type="submit">subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- ##### Footer Area End ##### -->
+</body>
+</html>

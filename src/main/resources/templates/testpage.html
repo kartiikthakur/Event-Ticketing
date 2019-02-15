@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head">
+        <!-- Title -->
+        <title>test page - MyTicket</title>
+    </head>
+<body>
+    <!-- ##### Preloader ##### -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <img src="img/core-img/compact-disc.png" alt="">
+        </div>
+    </div>
+    <header th:replace="layout :: site-header"></header>
+    
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(img/bg-img/breadcumb5.jpg);">
+    <div class="bradcumbContent">
+        <h2>test page</h2>
+    </div>
+</div>
+<!-- bg gradients -->
+<div class="bg-gradients"></div>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+
+    <p>test page</p>
+
+    <!-- ##### Upcoming Shows Area Start ##### -->
+    <div class="upcoming-shows-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>Upcoming Events</h2>
+                        <h6>Find your favorite show, Buy a ticket!</h6>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-12">
+                    <!-- Upcoming Shows Content -->
+                    <div class="upcoming-shows-content">
+    
+                        <!-- Single Upcoming Shows -->
+                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap" th:each="t : ${testlist}">
+                            <div class="shows-date">
+                                <h2>17 <span>July</span></h2>
+                            </div>
+                            <div class="shows-desc d-flex align-items-center">
+                                <div class="shows-img">
+                                    <img src="img/bg-img/s1.jpg" alt="">
+                                </div>
+                                <div class="shows-name">
+                                    <h6 th:text="${t.eventName}">Electric castle Festival</h6>
+                                    <p th:text="${t.location}">Cluj, Romania</p>
+                                </div>
+                            </div>
+                            <div class="shows-location">
+                                <p>At the Castle</p>
+                            </div>
+                            <div class="shows-time">
+                                <p>20:30</p>
+                            </div>
+                            <div class="buy-tickets">
+                                <a href="#" class="btn musica-btn">Buy Tikets</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Upcoming Shows Area End ##### -->
+
+    <article th:each="t : ${testlist}">
+        <h2 class="title" th:text="${t.eventName}">Event Name</h2>
+        <h2 class="" th:text="${t.eventCategory}">Event Category</h2>
+        <h2 class="" th:text="${t.location}">Event Location</h2>
+      </article>
+
+
+
+    <footer th:replace="layout :: site-footer"></footer>
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+</html>

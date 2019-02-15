@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <!-- Title -->
+    <title>MyTicket - Find your favorite event!</title>
+    <link rel="stylesheet" type="text/css" href="/css/classy-nav.css">
+</head>
+
+<body>
+<!-- ##### Preloader ##### -->
+<div class="preloader d-flex align-items-center justify-content-center">
+    <div class="circle-preloader">
+        <img src="img/core-img/compact-disc.png" alt="">
+    </div>
+</div>
+
+<!-- ##### Header Area Start ##### -->
+<header th:replace="layout :: site-header"></header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Hero Area Start ##### -->
+<section class="hero-area">
+    <div class="hero-slides owl-carousel">
+
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide d-flex align-items-center justify-content-center">
+            <!-- Slide Img -->
+            <div class="slide-img bg-img" style="background-image: url(img/bg-img/bg-1.jpg);"></div>
+            <!-- Slide Content -->
+            <div class="hero-slides-content text-center">
+                <h2 data-animation="fadeInUp" data-delay="100ms">Event <span>Event</span></h2>
+                <p data-animation="fadeInUp" data-delay="300ms">Local Event</p>
+            </div>
+            <!-- Big Text -->
+            <h2 class="big-text">Event</h2>
+        </div>
+
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide d-flex align-items-center justify-content-center">
+            <!-- Slide Img -->
+            <div class="slide-img bg-img" style="background-image: url(img/bg-img/bg-2.jpg);"></div>
+            <!-- Slide Content -->
+            <div class="hero-slides-content text-center">
+                <h2 data-animation="fadeInUp" data-delay="100ms">Party <span>Party</span></h2>
+                <p data-animation="fadeInUp" data-delay="300ms">Party</p>
+            </div>
+            <!-- Big Text -->
+            <h2 class="big-text">Party</h2>
+        </div>
+
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide d-flex align-items-center justify-content-center">
+            <!-- Slide Img -->
+            <div class="slide-img bg-img" style="background-image: url(img/bg-img/bg-3.jpg);"></div>
+            <!-- Slide Content -->
+            <div class="hero-slides-content text-center">
+                <h2 data-animation="fadeInUp" data-delay="100ms">Festival <span>Festival</span></h2>
+                <p data-animation="fadeInUp" data-delay="300ms">Festival</p>
+            </div>
+            <!-- Big Text -->
+            <h2 class="big-text">Festival</h2>
+        </div>
+
+    </div>
+    <!-- bg gradients -->
+    <div class="bg-gradients"></div>
+
+    <!-- Slide Down -->
+    <div class="slide-down" id="scrollDown">
+        <h6>Find Yours</h6>
+        <div class="line"></div>
+    </div>
+</section>
+<!-- ##### Hero Area End ##### -->
+
+<!-- ##### Search Shows Area Start ##### -->
+<div class="search-your-shows-area section-padding-100 bg-img" style="background-image: url(img/bg-img/bg-6.jpg);">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-your-shows-content">
+                    <h2>Find Your Event</h2>
+                    <div class="search-form">
+                        <form action="/search" method="post" class="form-inline justify-content-center">
+
+                            <div class="form-group m-4">
+                                <input type="text" class="form-control" name="event_location" id="event_location" value="" placeholder="New York">
+                            </div>
+                            <div class="form-group m-4">
+                                <input type="text" class="form-control" name="event_name" id="event_name" value="" placeholder="Name">
+                            </div>
+                            <button type="submit" class="btn musica-btn m-2">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Search Shows Area End ##### -->
+
+<!-- ##### Upcoming Shows Area Start ##### -->
+<div class="upcoming-shows-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Upcoming Events</h2>
+                    <h6>Find your favorite show, Buy a ticket!</h6>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Upcoming Shows Content -->
+                <div class="upcoming-shows-content">
+                    
+                    <!-- Single Upcoming Shows -->
+                    <div th:replace="fragments :: single-event-html"></div>
+                </div>    
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-12">
+                
+                <div class="upcoming-shows-content">
+      
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div class="shows-date">
+                            <h2>17 <span>July</span></h2>
+                        </div>
+                        <div class="shows-desc d-flex align-items-center">
+                            <div class="shows-img">
+                                <img src="img/bg-img/s1.jpg" alt="">
+                            </div>
+                            <div class="shows-name">
+                                <h6>Electric castle Festival</h6>
+                                <p>Cluj, Romania</p>
+                            </div>
+                        </div>
+                        <div class="shows-location">
+                            <p>At the Castle</p>
+                        </div>
+                        <div class="shows-time">
+                            <p>20:30</p>
+                        </div>
+                        <div class="buy-tickets">
+                            <a href="#" class="btn musica-btn">Buy Tikets</a>
+                        </div>
+                    </div>
+               
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div class="shows-date">
+                            <h2>23 <span>July</span></h2>
+                        </div>
+                        <div class="shows-desc d-flex align-items-center">
+                            <div class="shows-img">
+                                <img src="img/bg-img/s2.jpg" alt="">
+                            </div>
+                            <div class="shows-name">
+                                <h6>Electric Festival</h6>
+                                <p>Manhathan, NY, USA</p>
+                            </div>
+                        </div>
+                        <div class="shows-location">
+                            <p>Main Stadium</p>
+                        </div>
+                        <div class="shows-time">
+                            <p>21:30</p>
+                        </div>
+                        <div class="buy-tickets">
+                            <a href="#" class="btn musica-btn">Buy Tikets</a>
+                        </div>
+                    </div>
+            
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div class="shows-date">
+                            <h2>25 <span>July</span></h2>
+                        </div>
+                        <div class="shows-desc d-flex align-items-center">
+                            <div class="shows-img">
+                                <img src="img/bg-img/s3.jpg" alt="">
+                            </div>
+                            <div class="shows-name">
+                                <h6>Sunflower festival</h6>
+                                <p>Paris, France</p>
+                            </div>
+                        </div>
+                        <div class="shows-location">
+                            <p>Sunflower Arena</p>
+                        </div>
+                        <div class="shows-time">
+                            <p>20:30</p>
+                        </div>
+                        <div class="buy-tickets">
+                            <a href="#" class="btn musica-btn">Buy Tikets</a>
+                        </div>
+                    </div>
+    
+                    <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                        <div class="shows-date">
+                            <h2>30 <span>July</span></h2>
+                        </div>
+                        <div class="shows-desc d-flex align-items-center">
+                            <div class="shows-img">
+                                <img src="img/bg-img/s4.jpg" alt="">
+                            </div>
+                            <div class="shows-name">
+                                <h6>Electric castle Festival</h6>
+                                <p>Cluj, Romania</p>
+                            </div>
+                        </div>
+                        <div class="shows-location">
+                            <p>At the Castle</p>
+                        </div>
+                        <div class="shows-time">
+                            <p>20:30</p>
+                        </div>
+                        <div class="buy-tickets">
+                            <a href="#" class="btn musica-btn">Buy Tikets</a>
+                        </div>
+                    </div>
+
+                    <div th:replace="fragments :: single-event-html"></div>
+
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+<!-- ##### Upcoming Shows Area End ##### -->
+
+<!-- ##### Music Player Area Start ##### -->
+<div class="music-player-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="music-player-slides owl-carousel">
+
+                    <!-- Single Music Player -->
+                    <div class="single-music-player">
+                        <img src="img/bg-img/mp1.jpg" alt="">
+
+                        <div class="music-info d-flex justify-content-between">
+                            <div class="music-text">
+                                <h5>Artist’s/Band Name</h5>
+                                <p>Love is all Around</p>
+                            </div>
+                            <div class="music-play-icon">
+                                <audio preload="auto" controls>
+                                    <source src="">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Music Player -->
+                    <div class="single-music-player">
+                        <img src="img/bg-img/mp2.jpg" alt="">
+
+                        <div class="music-info d-flex justify-content-between">
+                            <div class="music-text">
+                                <h5>Artist’s/Band Name</h5>
+                                <p>Love is all Around</p>
+                            </div>
+                            <div class="music-play-icon">
+                                <audio preload="auto" controls>
+                                    <source src="">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Music Player -->
+                    <div class="single-music-player">
+                        <img src="img/bg-img/mp3.jpg" alt="">
+
+                        <div class="music-info d-flex justify-content-between">
+                            <div class="music-text">
+                                <h5>Artist’s/Band Name</h5>
+                                <p>Love is all Around</p>
+                            </div>
+                            <div class="music-play-icon">
+                                <audio preload="auto" controls>
+                                    <source src="">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Music Player -->
+                    <div class="single-music-player">
+                        <img src="img/bg-img/mp4.jpg" alt="">
+
+                        <div class="music-info d-flex justify-content-between">
+                            <div class="music-text">
+                                <h5>Artist’s/Band Name</h5>
+                                <p>Love is all Around</p>
+                            </div>
+                            <div class="music-play-icon">
+                                <audio preload="auto" controls>
+                                    <source src="">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Music Player Area End ##### -->
+
+<!-- ##### Featured Album Area Start ##### -->
+<div class="featured-album-area section-padding-100 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="featured-album-content d-flex flex-wrap">
+
+                    <!-- Album Thumbnail -->
+                    <div class="album-thumbnail h-100 bg-img" style="background-image: url(img/bg-img/bg-4.jpg);"></div>
+
+                    <!-- Album Songs -->
+                    <div class="album-songs h-100">
+
+                        <!-- Album Info -->
+                        <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="album-title">
+                                <h6>Featured album</h6>
+                                <h4>Love is all Around</h4>
+                            </div>
+                            <div class="album-buy-now">
+                                <a href="#" class="btn musica-btn">Buy it on Itunes</a>
+                            </div>
+                        </div>
+
+                        <div class="album-all-songs">
+
+                            <!-- Music Playlist -->
+                            <div class="music-playlist">
+                                <!-- Single Song -->
+                                <div class="single-music active">
+                                    <h6>Drop that beat</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Hey, Mister Dj</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Message to my future self</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Bring back the love</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Hey, Mister Dj - Remix</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Message to my future self</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Drop that beat</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Hey, Mister Dj</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Message to my future self</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Bring back the love</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Hey, Mister Dj - Remix</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+
+                                <!-- Single Song -->
+                                <div class="single-music">
+                                    <h6>Message to my future self</h6>
+                                    <audio preload="auto" controls>
+                                        <source src="">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Now Playing -->
+                        <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="songs-name">
+                                <p>Playing</p>
+                                <h6>Drop that beat</h6>
+                            </div>
+                            <audio preload="auto" controls>
+                                <source src="">
+                            </audio>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Featured Album Area End ##### -->
+
+<!-- ##### Music Artists Area Start ##### -->
+<div class="musica-music-artists-area d-flex flex-wrap clearfix">
+    <!-- Music Search -->
+    <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms" style="background-image: url(img/bg-img/bg-9.jpg);">
+        <!-- Content -->
+        <div class="music-search-content">
+            <h2>Music</h2>
+            <h4>Search for the best music</h4>
+        </div>
+    </div>
+
+    <!-- Artists Search -->
+    <div class="artists-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="600ms" style="background-image: url(img/bg-img/bg-1.jpg);">
+        <!-- Content -->
+        <div class="music-search-content">
+            <h2>Artists</h2>
+            <h4>Search for the best artists</h4>
+        </div>
+    </div>
+</div>
+
+<!-- Google Map -->
+<!--<div class="container" style="height:50px"></div>-->
+<hr>
+<div class="google-maps">
+    <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=1400%20Washington%20Avenue%2C%20Albany%2C%20NY%2C%20USA%20earth%20science%20building&key=AIzaSyBifOxMWorX6XIK-TEgw2w6RXlKJcdS2nw" allowfullscreen></iframe>
+</div>
+<hr>
+
+<!-- ##### Music Artists Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer th:replace="layout :: site-footer"></footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+    <!-- Custom JS for Thymeleaf -->
+    <script th:replace="fragments :: single-event-js"></script>
+</body>
+</html>
